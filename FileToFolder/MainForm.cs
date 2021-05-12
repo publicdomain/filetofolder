@@ -9,6 +9,7 @@ namespace FileToFolder
     using System;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.IO;
     using System.Reflection;
     using System.Windows.Forms;
     using Microsoft.Win32;
@@ -25,7 +26,7 @@ namespace FileToFolder
         private Icon associatedIcon = null;
 
         /// <summary>
-        /// The FileToFolder key list. [Inherited from Enfolder]
+        /// The FileToFolder key list. [Inherited from FileToFolder]
         /// </summary>
         private List<string> fileToFolderKeyList = new List<string> { @"Software\Classes\*\shell\FileToFolder" };
 
@@ -56,7 +57,32 @@ namespace FileToFolder
         /// <param name="e">Event arguments.</param>
         private void OnAddButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            try
+            {
+                // Iterate fileToFolder registry keys 
+                foreach (var fileToFolderKey in this.fileToFolderKeyList)
+                {
+                    // Add fileToFolder command to registry
+                    RegistryKey registryKey;
+                    registryKey = Registry.CurrentUser.CreateSubKey(fileToFolderKey);
+                    registryKey.SetValue("icon", Application.ExecutablePath);
+                    registryKey.SetValue("position", "Top");
+                    registryKey = Registry.CurrentUser.CreateSubKey($"{fileToFolderKey}\\command");
+                    registryKey.SetValue(string.Empty, $"{Path.Combine(Application.StartupPath, Application.ExecutablePath)} \"%1\"");
+                    registryKey.Close();
+                }
+
+                // Update the program by registry key
+                this.UpdateByRegistryKey();
+
+                // Notify user
+                MessageBox.Show($"FileToFolder context menu added!{Environment.NewLine}{Environment.NewLine}Right-click in Windows Explorer to use it.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Notify user
+                MessageBox.Show($"Error when adding fileToFolder context menu to registry.{Environment.NewLine}{Environment.NewLine}Message:{Environment.NewLine}{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
