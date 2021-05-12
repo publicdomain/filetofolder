@@ -92,7 +92,26 @@ namespace FileToFolder
         /// <param name="e">Event arguments.</param>
         private void OnRemoveButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            try
+            {
+                // Iterate fileToFolder registry keys 
+                foreach (var fileToFolderKey in this.fileToFolderKeyList)
+                {
+                    // Remove fileToFolder command to registry
+                    Registry.CurrentUser.DeleteSubKeyTree(fileToFolderKey);
+                }
+
+                // Update the program by registry key
+                this.UpdateByRegistryKey();
+
+                // Notify user
+                MessageBox.Show("FileToFolder context menu removed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Notify user
+                MessageBox.Show($"Error when removing FileToFolder command from registry.{Environment.NewLine}{Environment.NewLine}Message:{Environment.NewLine}{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
