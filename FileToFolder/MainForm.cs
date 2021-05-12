@@ -9,7 +9,9 @@ namespace FileToFolder
     using System;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.Reflection;
     using System.Windows.Forms;
+    using Microsoft.Win32;
 
     /// <summary>
     /// Main form.
@@ -17,12 +19,34 @@ namespace FileToFolder
     public partial class MainForm : Form
     {
         /// <summary>
+        /// Gets or sets the associated icon.
+        /// </summary>
+        /// <value>The associated icon.</value>
+        private Icon associatedIcon = null;
+
+        /// <summary>
+        /// The FileToFolder key list. [Inherited from Enfolder]
+        /// </summary>
+        private List<string> fileToFolderKeyList = new List<string> { @"Software\Classes\*\shell\FileToFolder" };
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:FileToFolder.MainForm"/> class.
         /// </summary>
         public MainForm()
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+
+            /* Set icons */
+
+            // Set associated icon from exe file
+            this.associatedIcon = Icon.ExtractAssociatedIcon(typeof(MainForm).GetTypeInfo().Assembly.Location);
+
+            // Set public domain gift ool strip menu item image
+            this.moreReleasesPublicDomainGiftcomToolStripMenuItem.Image = this.associatedIcon.ToBitmap();
+
+            // Update GUI
+            this.UpdateByRegistryKey();
         }
 
         /// <summary>
@@ -93,6 +117,40 @@ namespace FileToFolder
         private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
         {
             // TODO Add code
+        }
+
+        /// <summary>
+        /// Updates the program by registry key.
+        /// </summary>
+        private void UpdateByRegistryKey()
+        {
+            // Try to set FileToFolder key
+            using (var fileToFolderKey = Registry.CurrentUser.OpenSubKey(this.fileToFolderKeyList[0]))
+            {
+                // Check for no returned registry key
+                if (fileToFolderKey == null)
+                {
+                    // Disable remove button
+                    this.removeButton.Enabled = false;
+
+                    // Enable add button
+                    this.addButton.Enabled = true;
+
+                    // Update status text
+                    this.activityToolStripStatusLabel.Text = "Inactive";
+                }
+                else
+                {
+                    // Disable add button
+                    this.addButton.Enabled = false;
+
+                    // Enable remove button
+                    this.removeButton.Enabled = true;
+
+                    // Update status text
+                    this.activityToolStripStatusLabel.Text = "Active";
+                }
+            }
         }
     }
 }
