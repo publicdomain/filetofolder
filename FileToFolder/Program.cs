@@ -26,7 +26,7 @@ namespace FileToFolder
             if (args.Length > 0)
             {
                 // Set file path
-                string filePath = args[1];
+                string filePath = args[0];
 
                 // Set file name without extension
                 string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filePath);
@@ -69,6 +69,9 @@ namespace FileToFolder
                         $"From: {filePath}{Environment.NewLine}To: {destinationFilePath}{Environment.NewLine}Message: {exception.Message}{Environment.NewLine}{Environment.NewLine}"
                             );
                     }
+
+                    // Exit for loops
+                    break;
                 }
 
                 // Handle error list
@@ -80,6 +83,7 @@ namespace FileToFolder
                     // Advise user
                     MessageBox.Show($"Error count: {errorList.Count} error{(errorList.Count > 1 ? "s" : string.Empty)}.{Environment.NewLine}{Environment.NewLine}Please check FileToFolderErrorLog.txt for detailed information.", "FileToFolder operation had errors", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
             else // Execution by user
             {
