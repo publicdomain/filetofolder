@@ -108,7 +108,7 @@ namespace FileToFolder
             this.moreReleasesPublicDomainGiftcomToolStripMenuItem.Name = "moreReleasesPublicDomainGiftcomToolStripMenuItem";
             this.moreReleasesPublicDomainGiftcomToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
             this.moreReleasesPublicDomainGiftcomToolStripMenuItem.Text = "More releases @ PublicDomainGift.com";
-            this.moreReleasesPublicDomainGiftcomToolStripMenuItem.Click += new System.EventHandler(this.MoreReleasesPublicDomainGiftcomToolStripMenuItemClick);
+            this.moreReleasesPublicDomainGiftcomToolStripMenuItem.Click += new System.EventHandler(this.OnMoreReleasesPublicDomainGiftcomToolStripMenuItemClick);
             // 
             // originalThreadDonationCodercomToolStripMenuItem
             // 
@@ -116,7 +116,7 @@ namespace FileToFolder
             this.originalThreadDonationCodercomToolStripMenuItem.Name = "originalThreadDonationCodercomToolStripMenuItem";
             this.originalThreadDonationCodercomToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
             this.originalThreadDonationCodercomToolStripMenuItem.Text = "&Original thread @ DonationCoder.com";
-            this.originalThreadDonationCodercomToolStripMenuItem.Click += new System.EventHandler(this.OriginalThreadDonationCodercomToolStripMenuItemClick);
+            this.originalThreadDonationCodercomToolStripMenuItem.Click += new System.EventHandler(this.OnOriginalThreadDonationCodercomToolStripMenuItemClick);
             // 
             // sourceCodeGithubcomToolStripMenuItem
             // 
@@ -124,7 +124,7 @@ namespace FileToFolder
             this.sourceCodeGithubcomToolStripMenuItem.Name = "sourceCodeGithubcomToolStripMenuItem";
             this.sourceCodeGithubcomToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
             this.sourceCodeGithubcomToolStripMenuItem.Text = "Source code @ Github.com";
-            this.sourceCodeGithubcomToolStripMenuItem.Click += new System.EventHandler(this.SourceCodeGithubcomToolStripMenuItemClick);
+            this.sourceCodeGithubcomToolStripMenuItem.Click += new System.EventHandler(this.OnSourceCodeGithubcomToolStripMenuItemClick);
             // 
             // toolStripSeparator2
             // 
@@ -136,7 +136,7 @@ namespace FileToFolder
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(284, 22);
             this.aboutToolStripMenuItem.Text = "&About...";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItemClick);
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.OnAboutToolStripMenuItemClick);
             // 
             // mainStatusStrip
             // 

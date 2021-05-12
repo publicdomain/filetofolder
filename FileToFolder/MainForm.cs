@@ -70,7 +70,7 @@ namespace FileToFolder
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        void OriginalThreadDonationCodercomToolStripMenuItemClick(object sender, EventArgs e)
+        private void OnOriginalThreadDonationCodercomToolStripMenuItemClick(object sender, EventArgs e)
         {
             // TODO Add code
         }
