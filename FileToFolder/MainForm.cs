@@ -8,6 +8,7 @@ namespace FileToFolder
     // Directives
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Drawing;
     using System.IO;
     using System.Reflection;
@@ -132,7 +133,8 @@ namespace FileToFolder
         /// <param name="e">Event arguments.</param>
         private void OnMoreReleasesPublicDomainGiftcomToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Open website
+            Process.Start("https://publicdomaingift.com");
         }
 
         /// <summary>
