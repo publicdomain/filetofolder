@@ -3,7 +3,7 @@ Move selected file(s) to matching folder based on file namgit
 
 ![FileToFolfer_v0-1-1_add](https://user-images.githubusercontent.com/54631779/118145557-b6bd4880-b3db-11eb-85df-28a3cf303729.png)
 
-![FileToFolfer_v0-1-1_160-folderspng](https://user-images.githubusercontent.com/54631779/118144876-f59ece80-b3da-11eb-8aae-949b8523e052.png)
+![FileToFolfer_v0-1-1_160-selected](https://user-images.githubusercontent.com/54631779/118146236-6397c580-b3dc-11eb-85ec-693c3c71406a.png)
 
 ![FileToFolfer_v0-1-1_remove](https://user-images.githubusercontent.com/54631779/118145587-c046b080-b3db-11eb-951d-dc4c98f83b9a.png)
 
