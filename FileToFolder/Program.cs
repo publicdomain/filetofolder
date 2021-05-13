@@ -28,7 +28,7 @@ namespace FileToFolder
         [STAThread]
         private static void Main(string[] args)
         {
-            /* TODO Plenty of code inherited from FileToFolder; it can be simplified for single-directory processing */
+            /* TODO Plenty of code inherited from Enfolder; it can be simplified for single-directory processing */
 
             // Check arguments for context menu start
             if (args.Length > 0)

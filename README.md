@@ -1,11 +1,11 @@
 # FileToFolder
-Move selected file(s) to matching folder based on file name.
+Move selected file(s) to matching folder based on file namgit 
 
-![FileToFolfer_v0-1-0_add](https://user-images.githubusercontent.com/54631779/118017684-e78e7680-b324-11eb-9596-99233eb619d5.png)
+![FileToFolfer_v0-1-1_add](https://user-images.githubusercontent.com/54631779/118145557-b6bd4880-b3db-11eb-85df-28a3cf303729.png)
 
-![FileToFolfer_v0-1-0_menu](https://user-images.githubusercontent.com/54631779/118017689-e8270d00-b324-11eb-8605-f475119d806f.png)
+![FileToFolfer_v0-1-1_160-folderspng](https://user-images.githubusercontent.com/54631779/118144876-f59ece80-b3da-11eb-8aae-949b8523e052.png)
 
-![FileToFolfer_v0-1-0_remove](https://user-images.githubusercontent.com/54631779/118017670-e5c4b300-b324-11eb-9d7a-53eb9e63c96f.png)
+![FileToFolfer_v0-1-1_remove](https://user-images.githubusercontent.com/54631779/118145587-c046b080-b3db-11eb-951d-dc4c98f83b9a.png)
 
 Made for **nickodemos** from [donationcoder.com](https://www.donationcoder.com).
 
@@ -16,6 +16,11 @@ Source code: [FileToFolder @ GitHub](https://github.com/publicdomain/filetofolde
 Targets Microsoft .NET framework v4.5 (Native to Windows 8+)
 
 Notes:
+
+v0.1.1:
+- Fix selected files maximum.
+
+Day #133, Week #19 @ May 13, 2021
 
 v0.1.0:
 - Instantly appears on Windows Explorer right-click menu for files.
