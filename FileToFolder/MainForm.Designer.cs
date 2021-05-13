@@ -153,7 +153,7 @@ namespace FileToFolder
             // 
             this.mainToolStripStatusLabel.Name = "mainToolStripStatusLabel";
             this.mainToolStripStatusLabel.Size = new System.Drawing.Size(149, 17);
-            this.mainToolStripStatusLabel.Text = "Enfolder menu is currently:";
+            this.mainToolStripStatusLabel.Text = "FileToFolder menu is currently:";
             // 
             // activityToolStripStatusLabel
             // 

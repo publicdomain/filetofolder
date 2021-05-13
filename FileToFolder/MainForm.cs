@@ -211,7 +211,7 @@ namespace FileToFolder
             var aboutForm = new AboutForm(
                 $"About {programTitle}",
                 $"{programTitle} {version.Major}.{version.Minor}.{version.Build}",
-                $"Made for: nickodemos{Environment.NewLine}DonationCoder.com{Environment.NewLine}Day #132, Week #19 @ May 12, 2021",
+                $"Made for: nickodemos{Environment.NewLine}DonationCoder.com{Environment.NewLine}Day #133, Week #19 @ May 13, 2021",
                 licenseText,
                 this.Icon.ToBitmap())
             {
