@@ -1,5 +1,5 @@
 # FileToFolder
-Move selected file(s) to matching folder based on file namgit 
+Move selected file(s) to matching folder based on file name.
 
 ![FileToFolfer_v0-1-1_add](https://user-images.githubusercontent.com/54631779/118145557-b6bd4880-b3db-11eb-85df-28a3cf303729.png)
 
