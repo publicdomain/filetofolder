@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace FileToFolder
@@ -17,14 +18,25 @@ namespace FileToFolder
     internal sealed class Program
     {
         /// <summary>
+        /// The file mutex.
+        /// </summary>
+        private static Mutex fileMutex = null;
+
+        /// <summary>
         /// Program entry point.
         /// </summary>
         [STAThread]
         private static void Main(string[] args)
         {
+            /* TODO Plenty of code inherited from Enfolder; it can be simplified for single-directory processing */
+
             // Check arguments for context menu start
             if (args.Length > 0)
             {
+                // Get file write mutex to write item
+                fileMutex = new Mutex(false, @"Local\FileToFolderWrite");
+                fileMutex.WaitOne();
+
                 // Set file path
                 string filePath = args[0];
 
@@ -74,6 +86,9 @@ namespace FileToFolder
                     break;
                 }
 
+                // Release the mutex
+                fileMutex.ReleaseMutex();
+
                 // Handle error list
                 if (errorList.Count > 0)
                 {
@@ -83,7 +98,6 @@ namespace FileToFolder
                     // Advise user
                     MessageBox.Show($"Error count: {errorList.Count} error{(errorList.Count > 1 ? "s" : string.Empty)}.{Environment.NewLine}{Environment.NewLine}Please check FileToFolderErrorLog.txt for detailed information.", "FileToFolder operation had errors", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
             else // Execution by user
             {

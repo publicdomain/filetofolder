@@ -61,11 +61,13 @@ namespace FileToFolder
         {
             try
             {
+                // Declare the registry key
+                RegistryKey registryKey;
+
                 // Iterate fileToFolder registry keys 
                 foreach (var fileToFolderKey in this.fileToFolderKeyList)
                 {
                     // Add fileToFolder command to registry
-                    RegistryKey registryKey;
                     registryKey = Registry.CurrentUser.CreateSubKey(fileToFolderKey);
                     registryKey.SetValue("icon", Application.ExecutablePath);
                     registryKey.SetValue("position", "Top");
@@ -73,6 +75,11 @@ namespace FileToFolder
                     registryKey.SetValue(string.Empty, $"{Path.Combine(Application.StartupPath, Application.ExecutablePath)} \"%1\"");
                     registryKey.Close();
                 }
+
+                // Extend multi-select limit
+                registryKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer");
+                registryKey.SetValue("MultipleInvokePromptMinimum", 16, RegistryValueKind.DWord);
+                registryKey.Close();
 
                 // Update the program by registry key
                 this.UpdateByRegistryKey();
@@ -102,6 +109,9 @@ namespace FileToFolder
                     // Remove fileToFolder command to registry
                     Registry.CurrentUser.DeleteSubKeyTree(fileToFolderKey);
                 }
+
+                // Remove multi-select limit fix
+                Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer", true).DeleteValue("MultipleInvokePromptMinimum");
 
                 // Update the program by registry key
                 this.UpdateByRegistryKey();
